@@ -352,6 +352,8 @@ from quicken_demo_utils import qutils
 qutils.run_command("hostname -f")
 ```
 
+<img width="450" alt="image" src="img/l7-p1-4-0.png">
+
 
 ### Part 2 Pushing and Using Images on Hadoop
 
