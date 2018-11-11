@@ -1,12 +1,12 @@
 # DSX Local Workshop - User built Python packages + Custom Images on Hadoop
 
 In this workshop, we'll cover:<br>
-[Lab 6](https://github.com/chuyqa/DSX_Local_Nov2018_Hadoop_Workshop#lab-6-addingimporting-user-py-files-in-remote-spark-notebooks)
+[Lab 6](https://github.com/chuyqa/DSX_Local_Nov2018_Hadoop_Workshop#lab-6-addingimporting-user-py-files-in-remote-spark-notebooks) Working with .py files in Notebook Sessions
 - Creating python functions in Remote Livy Sessions
 - Testing .py files via spark addPyFile
 - Packaging a set of .py files into a tar/egg
 
-[Lab 7](https://github.com/chuyqa/DSX_Local_Nov2018_Hadoop_Workshop#lab-7-image-creation-and-pushdown)
+[Lab 7](https://github.com/chuyqa/DSX_Local_Nov2018_Hadoop_Workshop#lab-7-image-creation-and-pushdown) Image creation and pushdown to Hadoop
 - Installing custom packages into a DSX Runtime Image within a Project
 - Saving and tagging an image as a User
 - (Admin) Pushing a user-tagged image (Py Virtual Environment) to HDFS, to be available for all DSX users
