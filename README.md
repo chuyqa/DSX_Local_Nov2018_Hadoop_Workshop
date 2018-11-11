@@ -156,7 +156,7 @@ dsx_core_utils.hdfs_util.upload_file(webhdfs_endpoint, dsxlocal_file_location, d
 
 **Example:**
 
-<img width="520" alt="image" src="img/l6-p2-3.png">
+<img width="720" alt="image" src="img/l6-p2-3.png">
 
 
 **4. Test the .py file via sc.addPyFile in a new Livy Session¶**
