@@ -194,14 +194,16 @@ utils.run_command("pwd")
 
 Once a set of functions are "stable" and ready to package, you can use a Python setup.py file to create a new "quicken_demo_utils" python package (tar.gz or .egg).
 
-**1. Open a terminal from DSX to a python environment within your project**
+**1. Navigate back to the Projects Page > Utils-Workshop**
 
-Create a new script named `quicken-demo-utils`
-<img width="430" alt="image" src="img/l6-p2-1.png">
+**2. In the Environments tab, Open a terminal to one of the Envs**
 
-With the
+- For the "Jupyter with Python 2.7..." Environment, Open a new Terminal
 
-**2. Create the following Directory structure under your project `misc` directory.**
+<img width="450" alt="image" src="img/l6-p3-1.png">
+
+
+**3. Create the following Directory structure under your project `misc` directory.**
 
 ```
 $ pwd
@@ -210,16 +212,38 @@ $ pwd
 .
 └── misc
     └── workshop-packages
-        ├── quickens_demo_utils
+        ├── quicken_demo_utils
         │   ├── __init__.py
         │   └── qutils.py
         └── setup.py
 ```
 
-In which **qutils.py** contains the functions:
+By running:
+```
+mkdir misc/workshop-pacakges
+vi misc/workshop-pacakges/setup.py
+
+mkdir misc/workshop-pacakges/quicken_demo_utils
+touch misc/workshop-pacakges/quicken_demo_utils/__init__.py
+vi misc/workshop-pacakges/quicken_demo_utils/qutils.py
+```
+
+In which **setup.py** contains a simple packaging script:
+```
+from setuptools import setup, find_packages
+
+setup(
+    name = "quicken_demo_utils",
+    version = "0.1",
+    packages=['quicken_demo_utils']    
+)
+```    
+
+**qutils.py** contains the functions:
 ```
 def run_command(command, sleepAfter=None):        
     from subprocess import Popen, PIPE, STDOUT
+    import time
     p = Popen(command, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
     output = p.stdout.read()
     print(output)
@@ -230,98 +254,90 @@ def spark_dfs_topandas(DF1,DF2):
     return DF1.toPandas(),DF2.toPandas()
 ```
 
-**setup.py** contains a simple packaging script:
-```
-from setuptools import setup, find_packages
-
-setup(
-    name = "quickens_demo_utils",
-    version = "0.1",
-    packages=['quickens_demo_utils']    
-)
-```    
-
 **__init__.py** is an empty file
 ```
 touch __init__.py
 ```
 
-**3. Create the dist package**
+**4. Create the dist package**
 
 * sdist will create a tar.gz which can be pip installed or used in Livy
 
 ```
+cd misc/workshop-pacakges
 python setup.py sdist bdist_egg
 ```
 
-This will create `dist/quickens_demo_utils-0.1.tar.gz` with a package named `quickens_demo_utils`
+This will create `dist/quickens_demo_utils-0.1.tar.gz` with a package named `quicken_demo_utils`
 
-<img width="720" alt="image" src="img/part2-n2.png">
+<img width="520" alt="image" src="img/l6-p3-4.png">
 
 
-**4. Copy the packaged the tar.gz to Packages directory**
+**5. Copy the packaged the tar.gz to Packages directory**
 
 
 ```
 $ pwd
-/user-home/1001/DSX_Projects/Quickens-Workshop/misc/workshop-packages
-$ ls dist/
-quickens_demo_utils-0.1-py2.7.egg  quickens_demo_utils-0.1.tar.gz
-$ cp dist/*.tar.gz /user-home/1001/DSX_Projects/Quickens-Workshop/packages/python/
-```
+/user-home/1001/DSX_Projects/Utils-Workshop/misc/workshop-pacakges
 
+$ ls dist/
+quicken_demo_utils-0.1-py2.7.egg  quicken_demo_utils-0.1.tar.gz
+
+$ cp dist/*.tar.gz /user-home/1001/DSX_Projects/Utils-Workshop/packages/python/
+```
 
 ---
 
-## Part 3 - Using  the packged py in Remote Spark Notebooks
+## Lab 7. Image Creation and Pushdown
 
-### Method 1 HDFS + sc.addFile
+### Part 1 - Installing "quickens_demo_utils" to a custom image in DSX
 
-**1. Push the .zip to hdfs**
+**1. From the 'Environments' Tab within your Project, Launch a terminal for the Environment you want to add a package to**
 
-```
-# Show registered WebHDFS Secure URLS which logged in user has access to:
-import dsx_core_utils
-dsx_core_utils.list_dsxhi_webhdfs_endpoints();
-```
-In a new cell, upload the zip to the remote HDFS endpoint displayed.
-```
-dsxlocal_file_location="../packages/python/quickens_demo_utils-0.1.tar.gz"
-dsxhi_upload_hdfs_location="/user/user1/quickens_demo_utils-0.1.tar.gz"
-webhdfs_endpoint="<your cluster webhdfs output from above"
+- For the "Jupyter with Python 2.7..." Environment, Open a new Terminal
 
-dsx_core_utils.hdfs_util.upload_file(webhdfs_endpoint, dsxlocal_file_location, dsxhi_upload_hdfs_location )
-```
+<img width="450" alt="image" src="img/l6-p3-1.png">
 
-**2. Add the zip to an active Livy session**
-
-```
-%%spark
-
-sc.addPyFile("/user/user1/quickens_demo_utils-0.1.tar.gz")
-```
-
-**3. Run the custom function**
-
-```
-%%spark
-
-from quickens_demo_utils import qutils
-```
-
-### Method 2 - Installing "quickens_demo_utils" to a custom image in DSX
-1. From the **Environments** Tab within your Project, Launch a terminal for the Environment you want to add a package to
-<img width="520" alt="image" src="img/part2-m2.png">
 
 **2. Install the custom package we uploaded**
+- Users can install packages to their Environments, as environments are controlled at **Project** level.
+```
+$  ls packages/python/
+quicken_demo_utils-0.1.tar.gz
 
-<img width="720" alt="image" src="img/part2-m3.png">
+$ pip install packages/python/quicken_demo_utils-0.1.tar.gz
+Processing ./packages/python/quicken_demo_utils-0.1.tar.gz
+Building wheels for collected packages: quicken-demo-utils
+  Running setup.py bdist_wheel for quicken-demo-utils ... done
+  Stored in directory: /user-home/1001/.cache/pip/wheels/aa/77/b2/b7d1cca665af2366db966d0ee9aa71ce22adf4f71b2e32076e
+Successfully built quicken-demo-utils
+Installing collected packages: quicken-demo-utils
+Successfully installed quicken-demo-utils-0.1
+```
+
+<img width="520" alt="image" src="img/l7-p1-2.png">
+
+- Install an additional package available from `conda`, into this custom image
+```
+conda install tqdm -y
+
+```
 
 **3. Save the updated image**
 
-<img width="520" alt="image" src="img/part2-m4-1.png">
+- Users can save and tag an environment.
 
-<img width="320" alt="image" src="img/part2-m5.png">
+```
+name:
+tag:
+```
+
+<img width="420" alt="image" src="img/l7-p1-3.png">
+
+- Create some relevant tags. This allows the Admins to be able to see the User-created Environments, and when ready "Push" them to HDFS for all users to be able to leverage.
+
+<img width="450" alt="image" src="img/l7-p1-3-2">
+
 
 **4. Test the import in DSX Local Environment to verify**
 Once installed into an Environment within a Project, the imports are available within the DSX **Local** Environment.
@@ -330,43 +346,63 @@ Cells which run with `%%spark` run remotely. Cells without `%%spark` run locally
 <img width="750" alt="image" src="img/part2-m6.png">
 
 
-# Lab 2. Pushing an image with Conda installed + User Created packages.
 
-### Part 1 - Create a custom image with `tqdm` from conda channels
+### Part 2 Pushing and Using Images on Hadoop
 
-The model creation logic for the following sample requires the python `tqdm` library. Since we will be running the model creation logic in a _remote_ livy session, we will need to create a custom image which includes `tqdm`, and then configure our livy session to use that image.  In order to do this you can take the following steps:
-
-#### A. Start an environment
-From your project home page, use the `Environments` tab to _start_ a "`Jupyter with Python 2.7, ...`" environment.
-
-#### B. Install `tqdm` into the environment
-From your project home page, use the `Environments` tab to _launch a terminal_ shell for the environment that you started in Step A. When you are inside the terminal, type the following command to install `tqdm`:
-
-```
-conda install tqdm -y
-```
-
-When the command completes, you can `exit` the terminal.
-
-#### C. Save the environment as a custom image
-From your project home page, use the `Environments` tab to _save_ the environment that you edited in Step B.
+Once a user has created and tagged an image, the admin can use that Name and Tag to make the python virtual environment available on HDFS for all Livy Sessions (All users, read only access HDFS).
 
 
-### Part 2 - Push the image to HDP
-
-#### A. As a user, you can Save your image with *Name* and a *Tag*.
-
-Provide the *Name* and *Tag* to the Hadoop Administrator, as only DSX Administrators have the privileges required to Store this image on Hadoop and make it available for all users.
-
-<img width="550" alt="image" src="img/lab2-pt2-1.png">
-
-
-#### B. (Admin only) Push the saved image to hadoop
+**(Admin only) Push a saved image to hadoop**
 https://content-dsxlocal.mybluemix.net/docs/content/SSAS34_current/local/hadoopintegration.html#hadoopintegration__push
+```
+# User provides details for a saved image
+- image name: demo-utils-tqdm
+- image tag: v0.0.1
+- Base Environment: dsx-scripted-ml-python2
 
-<img width="650" alt="image" src="img/lab2-pt2-2.png">
+# Runtime name displayed under Hadoop Integration:
+demo-utils-tqdm-v0.0.1-dsx-scripted-ml-python2
+```
+
+<img width="650" alt="image" src="img/l7-p2-1.png">
+
+- Images have Read Only access on HDFS, and only the admins can update the globally available list.
 
 
-#### C. (User) Can now Run Weather example using tqdm + workshop-utils imports
+**1. (Users) Use custom images in Livy Sessions**
 
-Open the `Modeling+Weather+Geographies+on+Hadoop+using+Scikit-Learn.ipynb` notebook in this project to proceed with an example which depends on this new custom image.
+Once an image has been "Pushed", all DSX users will see the image details with the `dsx_core_utils` helper methods.
+
+- Display DSXHI Endpoints and Images
+```
+import dsx_core_utils
+DSXHI_SYSTEMS = dsx_core_utils.get_dsxhi_info(showSummary=True)
+```
+
+**Note** There is a new "imageId" displayed
+<img width="650" alt="image" src="img/l7-p2-1-1.png">
+
+
+- Spark Config for example image:
+```
+myConfig={
+ "queue": "default",
+ "driverMemory": "2G",
+ "numExecutors": 1
+}
+
+# Set up sparkmagic to connect to the selected registered HI
+# system with the specified configs.
+dsx_core_utils.setup_livy_sparkmagic(
+  system="<system name shown above>",
+  livy="livyspark2",
+  imageId="demo-utils-tqdm-v0.0.1-dsx-scripted-ml-python2",
+  addlConfig=myConfig)
+
+# (Re-)load spark magic to apply the new configs.
+%reload_ext sparkmagic.magics
+```
+
+**2. Proceed with Example Notebook**
+
+Open the `Modeling+Weather+Geographies+on+Hadoop+with+Scikit.ipynb` notebook in this project to proceed with an example which depends on this new custom image.
