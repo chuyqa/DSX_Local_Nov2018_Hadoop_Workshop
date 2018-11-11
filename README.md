@@ -200,7 +200,7 @@ Once a set of functions are "stable" and ready to package, you can use a Python 
 
 - For the "Jupyter with Python 2.7..." Environment, Open a new Terminal
 
-<img width="450" alt="image" src="img/l6-p3-1.png">
+<img width="450" alt="image" src="img/l6-p3-2.png">
 
 
 **3. Create the following Directory structure under your project `misc` directory.**
@@ -296,7 +296,7 @@ $ cp dist/*.tar.gz /user-home/1001/DSX_Projects/Utils-Workshop/packages/python/
 
 - For the "Jupyter with Python 2.7..." Environment, Open a new Terminal
 
-<img width="450" alt="image" src="img/l6-p3-1.png">
+<img width="450" alt="image" src="img/l6-p3-2.png">
 
 
 **2. Install the custom package we uploaded**
