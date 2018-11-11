@@ -201,14 +201,14 @@ Once a set of functions are "stable" and ready to package, you can use a Python 
 
 - For the "Jupyter with Python 2.7..." Environment, Open a new Terminal
 
-<img width="450" alt="image" src="img/l6-p3-2.png">
+<img width="550" alt="image" src="img/l6-p3-2.png">
 
 
 **3. Create the following Directory structure under your project `misc` directory.**
 
 ```
 $ pwd
-/user-home/1001/DSX_Projects/Quickens-Workshop/misc/workshop-packages
+/user-home/1001/DSX_Projects/Utils-Workshop/misc/workshop-packages
 
 .
 └── misc
@@ -269,7 +269,7 @@ cd misc/workshop-pacakges
 python setup.py sdist bdist_egg
 ```
 
-This will create `dist/quickens_demo_utils-0.1.tar.gz` with a package named `quicken_demo_utils`
+This will create `dist/quicken_demo_utils-0.1.tar.gz` with a package named `quicken_demo_utils`
 
 <img width="520" alt="image" src="img/l6-p3-4.png">
 
@@ -291,7 +291,7 @@ $ cp dist/*.tar.gz /user-home/1001/DSX_Projects/Utils-Workshop/packages/python/
 
 ## Lab 7. Image Creation and Pushdown
 
-### Part 1 - Installing "quickens_demo_utils" to a custom image in DSX
+### Part 1 - Installing "quicken_demo_utils" to a custom image in DSX
 
 **1. From the 'Environments' Tab within your Project, Launch a terminal for the Environment you want to add a package to**
 
