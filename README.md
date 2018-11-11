@@ -111,6 +111,7 @@ Leave the Livy session open, and proceed to Part 2 in a new tab.
 Navigate to the `Utils-Workshop` project. Select `Scripts` on the Left Hand Side, and "Add Script"
 
 Create a new script named `quicken-demo-utils`
+
 <img width="420" alt="image" src="img/l6-p2-1.png">
 
 With the contents
@@ -128,6 +129,7 @@ def spark_dfs_topandas(DF1,DF2):
 ```
 
 Click on the Save Icon
+
 <img width="520" alt="image" src="img/l6-p2-1-2.png">
 
 **2. Navigate back to the `Utils-Workshop` Project and Re-open the "Creating and using py functions in Livy Sessions" Notebook.**
