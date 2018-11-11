@@ -18,13 +18,13 @@ This lab is meant to be instructor-led. That is, the instructor will explain the
 Let's create a Remote Livy Session, which uses the default python environment available from YARN.
 We'll use this to define 2 new helper functions.
 
-1. Create a new Project "Utils-Workshop"
+**1. Create a new Project "Utils-Workshop"**
 
-2. Create a new Python 2.7 Notebook "Creating and using py functions in Livy Sessions"
+**2. Create a new Python 2.7 Notebook "Creating and using py functions in Livy Sessions"**
 
 <img width="370" alt="image" src="img/l6-p1-2.png">
 
-3. Create a Remote Livy Session
+**3. Create a Remote Livy Session**
 
 DSX Includes a set of python helper utils for interacting with remote Hadoop Environments.
 
@@ -66,7 +66,7 @@ livy_endpoint = 'https://value_shown_from_previous_cell/livy2/v1
 
 <img width="520" alt="image" src="img/l6-p1-3.png">
 
-4. Creating python functions in Remote Livy Sessions
+**4. Creating python functions in Remote Livy Sessions**
 
 Lets create 2 simple functions:
 
@@ -106,7 +106,7 @@ Leave the Livy session open, and proceed to Part 2 in a new tab.
 
 ### Part 2. Testing .py files via spark addPyFile
 
-1. Save the functions as a new Script in the DSX Project
+**1. Save the functions as a new Script in the DSX Project**
 
 Navigate to the `Utils-Workshop` project. Select `Scripts` on the Left Hand Side, and "Add Script"
 
@@ -130,9 +130,9 @@ def spark_dfs_topandas(DF1,DF2):
 Click on the Save Icon
 <img width="520" alt="image" src="img/l6-p2-1-2.png">
 
-2. Navigate back to the `Utils-Workshop` Project and Re-open the "Creating and using py functions in Livy Sessions" Notebook.
+**2. Navigate back to the `Utils-Workshop` Project and Re-open the "Creating and using py functions in Livy Sessions" Notebook.**
 
-3. Transfer the `quicken-demo-utils.py` script which was saved above, to your HDFS user directory.
+**3. Transfer `quicken-demo-utils.py` script which was saved above, to your HDFS user directory.**
 
 - Use cell magic `!ls` to see the relative path of the script which was just saved:
 
@@ -156,7 +156,7 @@ dsx_core_utils.hdfs_util.upload_file(webhdfs_endpoint, dsxlocal_file_location, d
 <img width="420" alt="image" src="img/l6=p2-3.png">
 
 
-4. Test the .py file via sc.addPyFile in a new Livy Session¶
+**4. Test the .py file via sc.addPyFile in a new Livy Session¶**
 
 - Delete the old session with %spark cleanup
 - Create a new session with %spark add
@@ -188,7 +188,8 @@ utils.run_command("pwd")
 
 
 
-### Part 2 Create "quicken-lab-utils" python package
+### Part 3 Create "quicken-lab-utils" python package
+
 Once a set of functions are "stable" and ready to package, you can use a Python setup.py file to create a new "quicken_demo_utils" python package (tar.gz or .egg).
 
 **1. Open a terminal from DSX to a python environment within your project**
