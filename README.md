@@ -97,12 +97,10 @@ run_command("hostname -f")
 run_command("pwd")
 ```
 
-<img width="520" alt="image" src="img/l6-p1-4.png">
+<img width="720" alt="image" src="img/l6-p1-4.png">
 
-Leave the Livy session open, and proceed to Part 2 in a new tab.
-```
-%spark cleanup
-```
+Proceed to Part 2 in a new browser tab.
+
 
 ### Part 2. Testing .py files via spark addPyFile
 
@@ -114,7 +112,8 @@ Create a new script named `quicken-demo-utils`
 
 <img width="420" alt="image" src="img/l6-p2-1.png">
 
-With the contents
+With the contents:
+
 ```
 def run_command(command, sleepAfter=None):   
     from subprocess import Popen, PIPE, STDOUT
@@ -128,13 +127,15 @@ def spark_dfs_topandas(DF1,DF2):
     return DF1.toPandas(),DF2.toPandas()
 ```
 
-Click on the Save Icon
+- Click on the Save Icon
 
 <img width="520" alt="image" src="img/l6-p2-1-2.png">
 
-**2. Navigate back to the `Utils-Workshop` Project and Re-open the "Creating and using py functions in Livy Sessions" Notebook.**
+**2. Navigate back to the `Utils-Workshop` Project**
 
-**3. Transfer `quicken-demo-utils.py` script which was saved above, to your HDFS user directory.**
+Re-open the "Creating and using py functions in Livy Sessions" Notebook Tab.
+
+**3. Upload `quicken-demo-utils.py` script which was saved above, to your HDFS user directory.**
 
 - Use cell magic `!ls` to see the relative path of the script which was just saved:
 
@@ -155,7 +156,7 @@ webhdfs_endpoint="https://asgardian-edge.fyre.ibm.com:8443/gateway/jalv-dsx121g-
 dsx_core_utils.hdfs_util.upload_file(webhdfs_endpoint, dsxlocal_file_location, dsxhi_upload_hdfs_location )
 ```
 
-<img width="420" alt="image" src="img/l6=p2-3.png">
+<img width="520" alt="image" src="img/l6-p2-3.png">
 
 
 **4. Test the .py file via sc.addPyFile in a new Livy Session¶**
