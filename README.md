@@ -333,11 +333,11 @@ name:  demo-utils-tqdm
 tag: v0.0.1
 ```
 
-<img width="420" alt="image" src="img/l7-p1-3.png">
+<img width="440" alt="image" src="img/l7-p1-3.png">
 
 - Create some relevant tags. This allows the Admins to be able to see the User-created Environments, and when ready "Push" them to HDFS for all users to be able to leverage.
 
-<img width="450" alt="image" src="img/l7-p1-3-2.png">
+<img width="560" alt="image" src="img/l7-p1-3-2.png">
 
 
 **4. Test the import in DSX Local Environment to verify**
