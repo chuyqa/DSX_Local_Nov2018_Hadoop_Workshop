@@ -328,23 +328,20 @@ conda install tqdm -y
 - Users can save and tag an environment.
 
 ```
-name:
-tag:
+name:  demo-utils-tqdm
+tag: v0.0.1
 ```
 
 <img width="420" alt="image" src="img/l7-p1-3.png">
 
 - Create some relevant tags. This allows the Admins to be able to see the User-created Environments, and when ready "Push" them to HDFS for all users to be able to leverage.
 
-<img width="450" alt="image" src="img/l7-p1-3-2">
+<img width="450" alt="image" src="img/l7-p1-3-2.png">
 
 
 **4. Test the import in DSX Local Environment to verify**
 Once installed into an Environment within a Project, the imports are available within the DSX **Local** Environment.
 Cells which run with `%%spark` run remotely. Cells without `%%spark` run locally within DSX.
-
-<img width="750" alt="image" src="img/part2-m6.png">
-
 
 
 ### Part 2 Pushing and Using Images on Hadoop
