@@ -149,12 +149,12 @@ dsx_core_utils.list_dsxhi_webhdfs_endpoints();
 ```
 dsxlocal_file_location="../scripts/quicken_demo_utils.py"
 dsxhi_upload_hdfs_location="/user/user1/quicken_demo_utils.py"
-webhdfs_endpoint="https://asgardian-edge.fyre.ibm.com:8443/gateway/jalv-dsx121g-master-1/webhdfs/v1'
-
-<your cluster webhdfs output from above"
+webhdfs_endpoint="your cluster webhdfs output from above"
 
 dsx_core_utils.hdfs_util.upload_file(webhdfs_endpoint, dsxlocal_file_location, dsxhi_upload_hdfs_location )
 ```
+
+**Example:**
 
 <img width="520" alt="image" src="img/l6-p2-3.png">
 
@@ -187,7 +187,7 @@ utils.run_command("hostname -f")
 utils.run_command("pwd")
 ```
 
-<img width="550" alt="image" src="img/l6-p2-4.png">
+<img width="750" alt="image" src="img/l6-p2-4.png">
 
 
 
