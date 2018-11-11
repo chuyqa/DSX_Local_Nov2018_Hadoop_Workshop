@@ -340,8 +340,16 @@ tag: v0.0.1
 
 
 **4. Test the import in DSX Local Environment to verify**
-Once installed into an Environment within a Project, the imports are available within the DSX **Local** Environment.
+
+Once installed into an Environment within a Project, the imports are available within the DSX **Local** Environment. Any Notebooks within **the user**'s the project which use the same Jupyter 2.7 Runtime, will have quicken_demo_utils installed.
 Cells which run with `%%spark` run remotely. Cells without `%%spark` run locally within DSX.
+```
+# Import the quicken_demo_utils helper method
+from quicken_demo_utils import qutils
+
+# should return a jupyter pod name, as it is running within DSX
+qutils.run_command("hostname -f")
+```
 
 
 ### Part 2 Pushing and Using Images on Hadoop
@@ -380,7 +388,7 @@ DSXHI_SYSTEMS = dsx_core_utils.get_dsxhi_info(showSummary=True)
 <img width="650" alt="image" src="img/l7-p2-1-1.png">
 
 
-- Spark Config for example image:
+- Spark Config which Leverages the custom image:
 ```
 myConfig={
  "queue": "default",
