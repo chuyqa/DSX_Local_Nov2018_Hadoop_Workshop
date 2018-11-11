@@ -297,7 +297,7 @@ $ cp dist/*.tar.gz /user-home/1001/DSX_Projects/Utils-Workshop/packages/python/
 
 - For the "Jupyter with Python 2.7..." Environment, Open a new Terminal
 
-<img width="450" alt="image" src="img/l6-p3-2.png">
+<img width="550" alt="image" src="img/l6-p3-2.png">
 
 
 **2. Install the custom package we uploaded**
