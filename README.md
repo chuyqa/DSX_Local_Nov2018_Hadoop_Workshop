@@ -2,12 +2,12 @@
 
 This workshop will cover the following:
 
-[Lab 6](https://github.com/chuyqa/DSX_Local_Nov2018_Hadoop_Workshop#lab-6-addingimporting-user-py-files-in-remote-spark-notebooks) - Working with .py files in Notebook Sessions
+[Lab 4](https://github.com/chuyqa/DSX_Local_Nov2018_Hadoop_Workshop#lab-6-addingimporting-user-py-files-in-remote-spark-notebooks) - Working with .py files in Notebook Sessions
 - Creating python functions in Remote Livy Sessions
 - Testing .py files via spark addPyFile
 - Packaging a set of .py files into a tar/egg
 
-[Lab 7](https://github.com/chuyqa/DSX_Local_Nov2018_Hadoop_Workshop#lab-7-image-creation-and-pushdown) - Image creation and pushdown to Hadoop
+[Lab 5](https://github.com/chuyqa/DSX_Local_Nov2018_Hadoop_Workshop#lab-7-image-creation-and-pushdown) - Image creation and pushdown to Hadoop
 - Installing custom packages into a DSX Runtime Image within a Project
 - Saving and tagging an image as a User
 - (Admin) Pushing a user-tagged image (Py Virtual Environment) to HDFS, to be available for all DSX users
@@ -15,7 +15,7 @@ This workshop will cover the following:
 
 This workshop is meant to be instructor-led. That is, the instructor will explain the objectives of the DSX capabilities covered in each lab, and demonstrate some of those capabilities at the beginning of each lab.
 
-## Lab 6. Adding/Importing user py files in Remote Spark Notebooks
+## Lab 4. Adding/Importing user py files in Remote Spark Notebooks
 
 ### Part 1 - Creating and using py functions in remote sessions.
 
@@ -293,7 +293,7 @@ $ cp dist/*.tar.gz /user-home/1001/DSX_Projects/Utils-Workshop/packages/python/
 
 ---
 
-## Lab 7. Image Creation and Pushdown
+## Lab 5. Image Creation and Pushdown
 
 ### Part 1 - Installing "quicken_demo_utils" to a custom image in DSX
 
