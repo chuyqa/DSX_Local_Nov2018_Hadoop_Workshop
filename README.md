@@ -112,7 +112,7 @@ Proceed to Part 2 in a new browser tab.
 
 Navigate to the `Utils-Workshop` project. Select `Scripts` on the Left Hand Side, and "Add Script"
 
-Create a new script named `quicken-demo-utils`
+Create a new script named `quicken_demo_utils`
 
 <img width="420" alt="image" src="img/l6-p2-1.png">
 
@@ -139,7 +139,7 @@ def spark_dfs_topandas(DF1,DF2):
 
 Re-open the "Creating and using py functions in Livy Sessions" Notebook Tab.
 
-**3. Upload `quicken-demo-utils.py` script which was saved above, to your HDFS user directory.**
+**3. Upload `quicken_demo_utils.py` script which was saved above, to your HDFS user directory.**
 
 - Use cell magic `!ls` to see the relative path of the script which was just saved:
 
@@ -177,7 +177,7 @@ dsx_core_utils.hdfs_util.upload_file(webhdfs_endpoint, dsxlocal_file_location, d
 - Test the imported Utils
 ```
 %%spark
-sc.addPyFile("hdfs:///user/user1/quicken_demo_utils.py")
+sc.addPyFile("hdfs:///user/[your_hdfs_user]/quicken_demo_utils.py")
 ```
 
 ```
